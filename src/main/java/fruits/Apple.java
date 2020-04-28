@@ -13,6 +13,6 @@ public class Apple extends Fruit {
 
     @Override
     public String toString() {
-        return String.valueOf(weight);
+        return "Jabłko: " + String.valueOf(weight);
     }
 }
