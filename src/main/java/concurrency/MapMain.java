@@ -1,9 +1,6 @@
 package concurrency;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -11,6 +8,11 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
 public class MapMain {
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 
     public static void main(String[] args) throws InterruptedException {
         ExecutorService executor = Executors.newFixedThreadPool(4);
@@ -22,10 +24,8 @@ public class MapMain {
             Random random = new Random();
 
             IntStream.range(0, 10_000).forEach(i -> {
-                safetyMap.compute(random.nextInt(100), (k, v) -> v == null ? 1 : v + 1);
-            });
-            IntStream.range(0, 10_000).forEach(i -> {
                 map.compute(random.nextInt(100), (k, v) -> v == null ? 1 : v + 1);
+                safetyMap.compute(random.nextInt(100), (k, v) -> v == null ? 1 : v + 1);
             });
         };
 

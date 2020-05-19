@@ -13,7 +13,7 @@ public class PiMain {
         double result;
 
         start = System.currentTimeMillis();
-        result = calculate(1, 10_000_000);
+        result = calculate(1, 10_000_00000);
         stop = System.currentTimeMillis();
         System.out.println("Wynik: " + result);
         System.out.println("Przetwarzanie na 1 wątku zajeło: " + (stop - start));
@@ -22,10 +22,10 @@ public class PiMain {
         DoubleAdder adder = new DoubleAdder();
 
         start = System.currentTimeMillis();
-        executor.submit(() -> adder.add(calculate(1, 2_500_000)));
-        executor.submit(() -> adder.add(calculate(2_500_001, 5_000_000)));
-        executor.submit(() -> adder.add(calculate(5_000_001, 7_500_000)));
-        executor.submit(() -> adder.add(calculate(7_500_001, 10_000_000)));
+        executor.submit(() -> adder.add(calculate(1, 2_500_00000)));
+        executor.submit(() -> adder.add(calculate(2_500_00001, 5_000_00000)));
+        executor.submit(() -> adder.add(calculate(5_000_00001, 7_500_00000)));
+        executor.submit(() -> adder.add(calculate(7_500_00001, 10_000_00000)));
         executor.shutdown();
         executor.awaitTermination(10, TimeUnit.SECONDS);
         result = adder.sum();
